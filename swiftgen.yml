@@ -1,0 +1,34 @@
+input_dir: AppetiserMovie/Resources/
+output_dir: AppetiserMovie/Resources/Generated/
+
+xcassets:
+  inputs:
+    - Assets/Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets.swift
+    params:
+      enumName: Assets
+      allValues: true
+      publicAccess: true
+
+fonts:
+  inputs:
+    - Fonts
+  outputs:
+    templateName: swift5
+    output: Fonts.swift
+    params:
+      enumName: USFont
+      fontAliasName: USFontFamily
+      allValues: true
+      publicAccess: true
+
+strings:
+  inputs:
+    - en.lproj
+  outputs:
+    templatePath: CodeGenTemplates/SwiftGen/strings/swiftgen-localizable-template.stencil.stencil
+    output: Localization.swift
+    params:
+        publicAccess: true

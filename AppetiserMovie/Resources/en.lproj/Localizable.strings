@@ -1,0 +1,29 @@
+/*
+ * Loco ios export: iOS Localizable.strings
+ * Project: ios_en (1).json conversion
+ * Release: Working copy
+ * Locale: en, English
+ * Exported by: Unregistered user
+ * Exported at: Tue, 25 Oct 2022 17:17:27 +0700
+ */
+
+/*  */
+"contact_addContact_title" = "ADD CONTACT DETAILS";
+
+/*  */
+"common_emptyState_des" = "No records to display, check back soon!";
+
+/*  */
+"common_emptyState_title" = "No data yet.";
+
+/*  */
+"common_forceUpdateState_des" = "Please update new version";
+
+/*  */
+"common_forceUpdateState_nextTimeBtn" = "Next time";
+
+/*  */
+"common_forceUpdateState_title" = "New version is available";
+
+/*  */
+"error_common_unavailable" = "Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.";
