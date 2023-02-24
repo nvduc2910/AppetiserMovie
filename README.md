@@ -3,13 +3,12 @@
 Hi there, thanks for spending the time to review my assignment and I hope you will enjoy (reviewing) it. Your comments are much appreciated regardless of the result so please help me understand what I should improve in the future.
 
 ## Wireframe and app design
-
-
+![Group 8 (1)](https://user-images.githubusercontent.com/12984583/221217313-35ec230c-f4e8-4335-bc7f-b5855c21672a.jpg)
 
 
 ## 1. Architecture
 
-<img src="https://i.ibb.co/KXsZV1y/1-5nf-F7o3-WNQv-TPtt-Nsi2y-EQ.webp" alt="Alt text" title="MVVM Diagram">
+<img width="910" alt="image" src="https://user-images.githubusercontent.com/12984583/221214803-fbc27f93-c68d-4aa8-9044-6579dc58d7cb.png">
 
 
 The application is using MVVM-C as main archiecture with RxSwift to build the features and Input/Output stream approach. It's quite similar to the traditional version, just that using Input/Output helps us make the responsibility clearer. 
