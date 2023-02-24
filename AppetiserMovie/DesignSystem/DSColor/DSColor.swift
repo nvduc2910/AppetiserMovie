@@ -39,6 +39,10 @@ public enum Colors {
     static var white: UIColor {
         return Colors.hex(hex: "#FFFFFF")
     }
+    
+    static var white230: UIColor {
+        return Colors.hex(hex: "#E9E6E6")
+    }
 }
 
 public extension Colors {

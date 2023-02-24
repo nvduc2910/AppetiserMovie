@@ -34,6 +34,7 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
     let output: MovieDetailViewModelOutput
     
     private var disposeBag = DisposeBag()
+    let favoriteService: FavoriteServiceType
     
     // MARK: - input ref
     
@@ -43,7 +44,9 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
     
     var movieSection = BehaviorRelay<[MovieSectionType]>(value: [])
     
-    init(movie: MovieItemUIModel) {
+    init(movie: MovieItemUIModel,
+         favoriteService: FavoriteServiceType = FavoriteService.default) {
+        self.favoriteService = favoriteService
         self.movie = movie
         
         input = MovieDetailViewModelInput(favoriteTrigger: favoriteTrigger)
@@ -55,7 +58,7 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
     func configureInput() {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
-            
+            item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
         }.disposed(by: disposeBag)
     }
     

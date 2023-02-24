@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class HomeTabbarViewController: UITabBarController {
 
@@ -16,6 +17,7 @@ class HomeTabbarViewController: UITabBarController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    var disposeBag = DisposeBag()
 }
 
 class MovieListUINavigationController: UINavigationController {
@@ -26,7 +28,8 @@ class MovieListUINavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let movieListViewController = MovieListViewController()
-        movieListViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default)
+        movieListViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default,
+                                                               favoriteService: FavoriteService.default)
         setViewControllers([movieListViewController], animated: false)
     }
 }
@@ -38,6 +41,8 @@ class FavoriteUINavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewControllers([FavoritedMovieViewController()], animated: false)
+        let favoriteListViewController = FavoritedMovieViewController()
+        favoriteListViewController.viewModel = FavoriteListViewModel()
+        setViewControllers([favoriteListViewController], animated: false)
     }
 }

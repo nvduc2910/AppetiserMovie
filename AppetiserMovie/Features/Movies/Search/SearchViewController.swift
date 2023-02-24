@@ -38,7 +38,11 @@ class SearchViewController: BaseViewController, MVVMView {
         searchBoxView.cornerRadius = 6
         
         textField.setStyle(DS.pDefault(color: Colors.white))
-        textField.placeholder = L10n.commonTypeToSearch
+        let attributes = [NSAttributedString.Key.foregroundColor: Colors.white230]
+        let attributedPlaceholderText = NSAttributedString(string: L10n.commonSearchPlaceholder, attributes: attributes)
+        textField.attributedPlaceholder = attributedPlaceholderText
+        textField.tintColor = .white
+    
         view.backgroundColor = Colors.primary
         
         tableView.backgroundColor = .clear

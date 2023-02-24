@@ -29,6 +29,9 @@
 		84D46CC229A88FC400721D8E /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D46CBA29A88FC400721D8E /* MovieListViewController.xib */; };
 		84D46CC329A88FC400721D8E /* MovieItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46CBC29A88FC400721D8E /* MovieItemTableViewCell.swift */; };
 		84D46CC429A88FC400721D8E /* MovieItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D46CBD29A88FC400721D8E /* MovieItemTableViewCell.xib */; };
+		84D46CC729A8A5D400721D8E /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46CC629A8A5D400721D8E /* CacheService.swift */; };
+		84D46CCA29A8A90B00721D8E /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46CC929A8A90B00721D8E /* FavoriteService.swift */; };
+		84D46CCC29A8BBBA00721D8E /* FavoriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46CCB29A8BBBA00721D8E /* FavoriteListViewModel.swift */; };
 		AB29824029A7178B007E3E76 /* Proxima Nova Alt Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB29823629A7178B007E3E76 /* Proxima Nova Alt Bold.otf */; };
 		AB29824129A7178B007E3E76 /* Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB29823729A7178B007E3E76 /* Proxima Nova Black.otf */; };
 		AB29824229A7178B007E3E76 /* Proxima Nova Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB29823829A7178B007E3E76 /* Proxima Nova Thin.otf */; };
@@ -63,10 +66,6 @@
 		AB29829829A72800007E3E76 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29829729A72800007E3E76 /* UIButton+Extension.swift */; };
 		AB29829A29A728FF007E3E76 /* ViewControllerLifecycleObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29829929A728FF007E3E76 /* ViewControllerLifecycleObservable.swift */; };
 		AB29829C29A72938007E3E76 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29829B29A72938007E3E76 /* UIViewController+Rx.swift */; };
-		AB2982A329A72D90007E3E76 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982A129A72D8F007E3E76 /* Config.swift */; };
-		AB2982A429A72D90007E3E76 /* IdentifiableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982A229A72D90007E3E76 /* IdentifiableObject.swift */; };
-		AB2982A729A72D98007E3E76 /* USRealmManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982A529A72D97007E3E76 /* USRealmManagerType.swift */; };
-		AB2982A829A72D98007E3E76 /* USRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982A629A72D97007E3E76 /* USRealmManager.swift */; };
 		AB2982C129A8747C007E3E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2982BF29A8747C007E3E76 /* Main.storyboard */; };
 		AB2982C829A87CD1007E3E76 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982C729A87CD1007E3E76 /* UIView+Extension.swift */; };
 		AB2982CA29A87F82007E3E76 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2982C929A87F82007E3E76 /* UIImageView+Extension.swift */; };
@@ -135,6 +134,9 @@
 		84D46CBA29A88FC400721D8E /* MovieListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
 		84D46CBC29A88FC400721D8E /* MovieItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieItemTableViewCell.swift; sourceTree = "<group>"; };
 		84D46CBD29A88FC400721D8E /* MovieItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieItemTableViewCell.xib; sourceTree = "<group>"; };
+		84D46CC629A8A5D400721D8E /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		84D46CC929A8A90B00721D8E /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
+		84D46CCB29A8BBBA00721D8E /* FavoriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewModel.swift; sourceTree = "<group>"; };
 		8D0BD3A6A4249B934F6A04CC /* Pods-AppetiserMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppetiserMovie.release.xcconfig"; path = "Target Support Files/Pods-AppetiserMovie/Pods-AppetiserMovie.release.xcconfig"; sourceTree = "<group>"; };
 		8DEA4006627D0C54AA9D9368 /* Pods-AppetiserMovie-AppetiserMovieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppetiserMovie-AppetiserMovieUITests.release.xcconfig"; path = "Target Support Files/Pods-AppetiserMovie-AppetiserMovieUITests/Pods-AppetiserMovie-AppetiserMovieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9ADAB7F961D713B5E31C5522 /* Pods-AppetiserMovie-AppetiserMovieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppetiserMovie-AppetiserMovieUITests.debug.xcconfig"; path = "Target Support Files/Pods-AppetiserMovie-AppetiserMovieUITests/Pods-AppetiserMovie-AppetiserMovieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,10 +175,6 @@
 		AB29829729A72800007E3E76 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB29829929A728FF007E3E76 /* ViewControllerLifecycleObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLifecycleObservable.swift; sourceTree = "<group>"; };
 		AB29829B29A72938007E3E76 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
-		AB2982A129A72D8F007E3E76 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = AppetiserMovie/Data/PersistentStorages/Config.swift; sourceTree = SOURCE_ROOT; };
-		AB2982A229A72D90007E3E76 /* IdentifiableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdentifiableObject.swift; path = AppetiserMovie/Data/PersistentStorages/IdentifiableObject.swift; sourceTree = SOURCE_ROOT; };
-		AB2982A529A72D97007E3E76 /* USRealmManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = USRealmManagerType.swift; path = AppetiserMovie/Data/PersistentStorages/USRealmManagerType.swift; sourceTree = SOURCE_ROOT; };
-		AB2982A629A72D97007E3E76 /* USRealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = USRealmManager.swift; path = AppetiserMovie/Data/PersistentStorages/USRealmManager.swift; sourceTree = SOURCE_ROOT; };
 		AB2982C029A8747C007E3E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB2982C729A87CD1007E3E76 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AB2982C929A87F82007E3E76 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -255,6 +253,8 @@
 		84D46C8B29A8749000721D8E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84D46CC829A8A8F500721D8E /* FavoriteService */,
+				84D46CC529A8A5C300721D8E /* CacheService */,
 				84D46C8C29A8749000721D8E /* SearchService */,
 			);
 			path = Services;
@@ -372,6 +372,7 @@
 			children = (
 				84D46CB629A88FC400721D8E /* FavoritedMovieViewController.swift */,
 				84D46CB729A88FC400721D8E /* FavoritedMovieViewController.xib */,
+				84D46CCB29A8BBBA00721D8E /* FavoriteListViewModel.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -397,11 +398,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		AB29822A29A71538007E3E76 /* Networking */ = {
+		84D46CC529A8A5C300721D8E /* CacheService */ = {
 			isa = PBXGroup;
 			children = (
+				84D46CC629A8A5D400721D8E /* CacheService.swift */,
 			);
-			path = Networking;
+			path = CacheService;
+			sourceTree = "<group>";
+		};
+		84D46CC829A8A8F500721D8E /* FavoriteService */ = {
+			isa = PBXGroup;
+			children = (
+				84D46CC929A8A90B00721D8E /* FavoriteService.swift */,
+			);
+			path = FavoriteService;
 			sourceTree = "<group>";
 		};
 		AB29822C29A7154F007E3E76 /* Extension */ = {
@@ -550,41 +560,6 @@
 			path = DSButton;
 			sourceTree = "<group>";
 		};
-		AB29829D29A72D2B007E3E76 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				AB29829E29A72D49007E3E76 /* PersistentStorages */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		AB29829E29A72D49007E3E76 /* PersistentStorages */ = {
-			isa = PBXGroup;
-			children = (
-				AB29829F29A72D4F007E3E76 /* Realm */,
-			);
-			path = PersistentStorages;
-			sourceTree = "<group>";
-		};
-		AB29829F29A72D4F007E3E76 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				AB2982A029A72D5F007E3E76 /* Model */,
-				AB2982A629A72D97007E3E76 /* USRealmManager.swift */,
-				AB2982A529A72D97007E3E76 /* USRealmManagerType.swift */,
-				AB2982A129A72D8F007E3E76 /* Config.swift */,
-				AB2982A229A72D90007E3E76 /* IdentifiableObject.swift */,
-			);
-			path = Realm;
-			sourceTree = "<group>";
-		};
-		AB2982A029A72D5F007E3E76 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		AB2982E029A89834007E3E76 /* BaseViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,11 +675,9 @@
 				84D46C9429A874A300721D8E /* Networking */,
 				84D46C9129A8749900721D8E /* Models */,
 				84D46C8B29A8749000721D8E /* Services */,
-				AB29829D29A72D2B007E3E76 /* Data */,
 				AB29826B29A72368007E3E76 /* DesignSystem */,
 				AB29822F29A715DD007E3E76 /* Utils */,
 				AB29822C29A7154F007E3E76 /* Extension */,
-				AB29822A29A71538007E3E76 /* Networking */,
 				AB2982BF29A8747C007E3E76 /* Main.storyboard */,
 				AB29822E29A715B9007E3E76 /* Resources */,
 				AB7F18F529A710C500F841EB /* AppDelegate.swift */,
@@ -1020,12 +993,10 @@
 			files = (
 				AB29828929A72368007E3E76 /* UILabel+DSTextStyle.swift in Sources */,
 				AB29828429A72368007E3E76 /* StateViewPresentable+Extension.swift in Sources */,
-				AB2982A329A72D90007E3E76 /* Config.swift in Sources */,
 				84D46CC129A88FC400721D8E /* MovieListViewController.swift in Sources */,
+				84D46CC729A8A5D400721D8E /* CacheService.swift in Sources */,
 				AB29828729A72368007E3E76 /* LoadingStyle.swift in Sources */,
-				AB2982A829A72D98007E3E76 /* USRealmManager.swift in Sources */,
 				84D46CB029A88F2400721D8E /* BaseViewController.swift in Sources */,
-				AB2982A729A72D98007E3E76 /* USRealmManagerType.swift in Sources */,
 				AB29825A29A71C7E007E3E76 /* Fonts.swift in Sources */,
 				AB29829829A72800007E3E76 /* UIButton+Extension.swift in Sources */,
 				84D46C9029A8749000721D8E /* SearchItemService .swift in Sources */,
@@ -1038,6 +1009,7 @@
 				AB2982F329A89887007E3E76 /* TakeWhen.swift in Sources */,
 				AB29828A29A72368007E3E76 /* UIButton+DSTextStyle.swift in Sources */,
 				AB29829A29A728FF007E3E76 /* ViewControllerLifecycleObservable.swift in Sources */,
+				84D46CCA29A8A90B00721D8E /* FavoriteService.swift in Sources */,
 				84D46CA229A874C200721D8E /* TabbarController.swift in Sources */,
 				84D46CA029A874C200721D8E /* TabbarItem.swift in Sources */,
 				84D46C9829A874A300721D8E /* TargetType.swift in Sources */,
@@ -1055,11 +1027,11 @@
 				AB29830929A8B4E7007E3E76 /* MovieDescriptionTableViewCell.swift in Sources */,
 				AB2982E729A8985A007E3E76 /* MovieListViewModel.swift in Sources */,
 				AB2982E429A89835007E3E76 /* BaseViewModel.swift in Sources */,
-				AB2982A429A72D90007E3E76 /* IdentifiableObject.swift in Sources */,
 				84D46CBE29A88FC400721D8E /* HomeTabbarViewController.swift in Sources */,
 				AB2982C829A87CD1007E3E76 /* UIView+Extension.swift in Sources */,
 				AB29828E29A72368007E3E76 /* SkeletonCollectionView.swift in Sources */,
 				AB2982EC29A89860007E3E76 /* MovieItemLoadingTableViewCell.swift in Sources */,
+				84D46CCC29A8BBBA00721D8E /* FavoriteListViewModel.swift in Sources */,
 				AB29828829A72368007E3E76 /* DSTextStyle.swift in Sources */,
 				AB29828629A72368007E3E76 /* ViewStates.swift in Sources */,
 				AB2982F729A8A6D6007E3E76 /* SearchViewController.swift in Sources */,

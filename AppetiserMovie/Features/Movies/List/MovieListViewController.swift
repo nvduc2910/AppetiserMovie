@@ -33,7 +33,7 @@ class MovieListViewController: BaseViewController, MVVMView {
         tableView.backgroundColor = Colors.primary
         headerView.backgroundColor = Colors.primary
         titleLabel.setStyle(DS.mobileHero(color: Colors.white))
-        titleLabel.text = L10n.commonTitle
+        titleLabel.text = L10n.titleScreenMovie
         
         searchButton.setTitle("", for: .normal)
         searchButton.setImage(Assets.icSearch.image, for: .normal)
@@ -41,7 +41,7 @@ class MovieListViewController: BaseViewController, MVVMView {
         searchButton.rx.tap.subscribeNext { [weak self] _ in
             guard let self = self else { return }
             let searchViewController = SearchViewController()
-            searchViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default)
+            searchViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default, favoriteService: FavoriteService.default)
             searchViewController.modalPresentationStyle = .fullScreen
             self.present(searchViewController, animated: true)
         }.disposed(by: disposeBag)

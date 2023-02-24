@@ -20,12 +20,16 @@ public enum L10n {
   public static let commonForceUpdateStateNextTimeBtn = L10n.tr("Localizable", "common_forceUpdateState_nextTimeBtn", fallback: "Next time")
   /// New version is available
   public static let commonForceUpdateStateTitle = L10n.tr("Localizable", "common_forceUpdateState_title", fallback: "New version is available")
+  /// Type to search
+  public static let commonSearchPlaceholder = L10n.tr("Localizable", "common_search_placeholder", fallback: "Type to search")
   /// Movie
   public static let commonTitle = L10n.tr("Localizable", "common_title", fallback: "Movie")
-  /// Type to search
-  public static let commonTypeToSearch = L10n.tr("Localizable", "common_type_to_search", fallback: "Type to search")
   /// Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.
   public static let errorCommonUnavailable = L10n.tr("Localizable", "error_common_unavailable", fallback: "Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.")
+  /// Favorite
+  public static let titleScreenFavorite = L10n.tr("Localizable", "title_screen_favorite", fallback: "Favorite")
+  /// Movie
+  public static let titleScreenMovie = L10n.tr("Localizable", "title_screen_movie", fallback: "Movie")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
