@@ -471,13 +471,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		AB29823529A71688007E3E76 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		AB29826B29A72368007E3E76 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,7 +702,6 @@
 				84D46C8B29A8749000721D8E /* Services */,
 				AB29829D29A72D2B007E3E76 /* Data */,
 				AB29826B29A72368007E3E76 /* DesignSystem */,
-				AB29823529A71688007E3E76 /* Services */,
 				AB29822F29A715DD007E3E76 /* Utils */,
 				AB29822C29A7154F007E3E76 /* Extension */,
 				AB29822A29A71538007E3E76 /* Networking */,

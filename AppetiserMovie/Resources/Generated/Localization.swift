@@ -20,8 +20,10 @@ public enum L10n {
   public static let commonForceUpdateStateNextTimeBtn = L10n.tr("Localizable", "common_forceUpdateState_nextTimeBtn", fallback: "Next time")
   /// New version is available
   public static let commonForceUpdateStateTitle = L10n.tr("Localizable", "common_forceUpdateState_title", fallback: "New version is available")
-  /// ADD CONTACT DETAILS
-  public static let contactAddContactTitle = L10n.tr("Localizable", "contact_addContact_title", fallback: "ADD CONTACT DETAILS")
+  /// Movie
+  public static let commonTitle = L10n.tr("Localizable", "common_title", fallback: "Movie")
+  /// Type to search
+  public static let commonTypeToSearch = L10n.tr("Localizable", "common_type_to_search", fallback: "Type to search")
   /// Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.
   public static let errorCommonUnavailable = L10n.tr("Localizable", "error_common_unavailable", fallback: "Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.")
 }

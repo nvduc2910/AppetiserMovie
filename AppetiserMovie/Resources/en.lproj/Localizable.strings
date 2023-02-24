@@ -1,15 +1,3 @@
-/*
- * Loco ios export: iOS Localizable.strings
- * Project: ios_en (1).json conversion
- * Release: Working copy
- * Locale: en, English
- * Exported by: Unregistered user
- * Exported at: Tue, 25 Oct 2022 17:17:27 +0700
- */
-
-/*  */
-"contact_addContact_title" = "ADD CONTACT DETAILS";
-
 /*  */
 "common_emptyState_des" = "No records to display, check back soon!";
 
@@ -27,3 +15,7 @@
 
 /*  */
 "error_common_unavailable" = "Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.";
+
+"common_type_to_search" = "Type to search";
+
+"common_title" = "Movie";

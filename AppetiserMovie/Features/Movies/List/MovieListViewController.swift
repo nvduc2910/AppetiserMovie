@@ -33,7 +33,7 @@ class MovieListViewController: BaseViewController, MVVMView {
         tableView.backgroundColor = Colors.primary
         headerView.backgroundColor = Colors.primary
         titleLabel.setStyle(DS.mobileHero(color: Colors.white))
-        titleLabel.text = "Movie"
+        titleLabel.text = L10n.commonTitle
         
         searchButton.setTitle("", for: .normal)
         searchButton.setImage(Assets.icSearch.image, for: .normal)

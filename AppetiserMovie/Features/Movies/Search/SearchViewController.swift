@@ -38,7 +38,7 @@ class SearchViewController: BaseViewController, MVVMView {
         searchBoxView.cornerRadius = 6
         
         textField.setStyle(DS.pDefault(color: Colors.white))
-        textField.placeholder = "Type to search"
+        textField.placeholder = L10n.commonTypeToSearch
         view.backgroundColor = Colors.primary
         
         tableView.backgroundColor = .clear
