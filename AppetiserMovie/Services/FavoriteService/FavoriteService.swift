@@ -43,15 +43,13 @@ class FavoriteService: FavoriteServiceType {
         cacheService.saveObject(movies, for: .movies)
     }
     
-    var disposeBag = DisposeBag()
-    
-    func getCacheMovies() -> [Movie] {
-        let movies: [Movie]? = cacheService.getObject(for: .movies)
-        return movies ?? []
-    }
-    
     func getMovies() -> Observable<[Movie]> {
         let data: Observable<[Movie]?> = cacheService.getObject(for: .movies)
         return data.filterNil()
+    }
+    
+    private func getCacheMovies() -> [Movie] {
+        let movies: [Movie]? = cacheService.getObject(for: .movies)
+        return movies ?? []
     }
 }

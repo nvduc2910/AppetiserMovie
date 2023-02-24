@@ -35,6 +35,29 @@ public class CacheService: NSObject, CacheServiceType {
         }
     }
     
+    func getObject<T>(for key: UserAppSettingsKey) -> T? where T : Decodable, T : Encodable {
+        if let data = userDefault.object(forKey: key.name) as? Data {
+            let decoder = JSONDecoder()
+            if let object = try? decoder.decode(T.self, from: data) {
+                return object
+            }
+        }
+        return nil
+    }
+    
+    func getObject<T>(for key: UserAppSettingsKey) -> RxSwift.Observable<T?> where T : Decodable, T : Encodable {
+        return valueChange.asObservable().filter({ $0 == key.name }).startWith("")
+            .map { [weak self] _ -> T? in
+                if let data = self?.userDefault.object(forKey: key.name) as? Data {
+                    let decoder = JSONDecoder()
+                    if let object = try? decoder.decode(T.self, from: data) {
+                        return object
+                    }
+                }
+                return nil
+            }
+    }
+    
     private func removeObserver(key: String) {
         if let index = observerKeys.firstIndex(where: { $0 == key }) {
             userDefault.removeObserver(self, forKeyPath: key)
@@ -59,29 +82,6 @@ public class CacheService: NSObject, CacheServiceType {
         UserAppSettingsKey.allCases.map { $0.name }.forEach { key in
             userDefault.removeObserver(self, forKeyPath: key)
         }
-    }
-    
-    func getObject<T>(for key: UserAppSettingsKey) -> T? where T : Decodable, T : Encodable {
-        if let data = userDefault.object(forKey: key.name) as? Data {
-            let decoder = JSONDecoder()
-            if let object = try? decoder.decode(T.self, from: data) {
-                return object
-            }
-        }
-        return nil
-    }
-    
-    func getObject<T>(for key: UserAppSettingsKey) -> RxSwift.Observable<T?> where T : Decodable, T : Encodable {
-        return valueChange.asObservable().filter({ $0 == key.name }).startWith("")
-            .map { [weak self] _ -> T? in
-                if let data = self?.userDefault.object(forKey: key.name) as? Data {
-                    let decoder = JSONDecoder()
-                    if let object = try? decoder.decode(T.self, from: data) {
-                        return object
-                    }
-                }
-                return nil
-            }
     }
 }
 
