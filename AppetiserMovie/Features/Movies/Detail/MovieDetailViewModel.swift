@@ -29,7 +29,7 @@ protocol MovieDetailViewModelType {
 
 final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
     
-    let movie: MovieItemUIModel
+    var movie: MovieItemUIModel
     let input: MovieDetailViewModelInput
     let output: MovieDetailViewModelOutput
     
@@ -59,6 +59,8 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
             item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
+            self.movie.isFavorite.toggle()
+            self.viewDidLoad()
         }.disposed(by: disposeBag)
     }
     

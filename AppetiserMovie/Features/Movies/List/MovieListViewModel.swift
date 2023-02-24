@@ -103,7 +103,7 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
             item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
             
             var items = self.itemsRelay.value
-            if let index = items.firstIndex(where: { $0.trackName == item.trackName }) {
+            if let index = items.firstIndex(where: { $0.id == item.id }) {
                 items[index].isFavorite.toggle()
                 self.itemsRelay.accept(items)
             }
