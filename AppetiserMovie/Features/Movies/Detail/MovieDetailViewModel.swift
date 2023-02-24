@@ -59,7 +59,7 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
             item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
-            self.movie.isFavorite = !item.isFavorite
+            self.movie.isFavorite.toggle()
             self.updateSections()
         }.disposed(by: disposeBag)
     }

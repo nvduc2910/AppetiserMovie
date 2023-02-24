@@ -1,8 +1,8 @@
 //
 //  Retry+Rx.swift
-//  Upscale
+//  AppetiserMovie
 //
-//  Created by Duc Nguyen on 11/14/21.
+//  Created by Duckie N on 2/24/23.
 //
 
 import Foundation

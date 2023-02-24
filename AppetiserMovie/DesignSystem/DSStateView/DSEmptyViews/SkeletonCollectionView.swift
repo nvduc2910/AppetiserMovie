@@ -1,8 +1,8 @@
 //
 //  SkeletonCollectionView.swift
-//  Upscale
+//  AppetiserMovie
 //
-//  Created by Duckie N on 24/11/2021.
+//  Created by Duckie N on 2/24/23.
 //
 
 import Reusable
