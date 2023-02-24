@@ -13,15 +13,27 @@ public enum Colors {
     // MARK: - primary colors
     
     static var primary: UIColor {
-        return Colors.hex(hex: "#4c2875")
+        return Colors.hex(hex: "#15141F")
     }
     
     static var secondary: UIColor {
-        return Colors.hex(hex: "#4c2875")
+        return Colors.hex(hex: "#201F2C")
+    }
+    
+    static var highLight: UIColor {
+        return Colors.hex(hex: "#EB5757")
+    }
+    
+    static var neutral200: UIColor {
+        return Colors.hex(hex: "#786C86")
     }
     
     static var neutral: UIColor {
-        return Colors.hex(hex: "#574E61")
+        return Colors.hex(hex: "#CCCACA")
+    }
+    
+    static var neutral100: UIColor {
+        return Colors.hex(hex: "#B6B6B6")
     }
     
     static var white: UIColor {

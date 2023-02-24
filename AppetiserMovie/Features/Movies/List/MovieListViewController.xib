@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="AppetiserMovie" customModuleProvider="target">
+            <connections>
+                <outlet property="headerView" destination="RUq-dS-69t" id="TFP-jV-tcm"/>
+                <outlet property="searchButton" destination="DeK-hb-jN8" id="JZb-77-E0y"/>
+                <outlet property="tableView" destination="YoJ-hl-dxp" id="iuF-4z-kqV"/>
+                <outlet property="titleLabel" destination="dYi-E1-SyN" id="ugN-yo-0Qm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUq-dS-69t">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="122"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYi-E1-SyN">
+                            <rect key="frame" x="16" y="80" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeK-hb-jN8">
+                            <rect key="frame" x="337" y="70.666666666666671" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="6R7-uk-caG"/>
+                                <constraint firstAttribute="height" constant="40" id="WpH-vH-ypk"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="122" id="2LX-RQ-2YA"/>
+                        <constraint firstAttribute="bottom" secondItem="dYi-E1-SyN" secondAttribute="bottom" constant="21" id="EEG-aS-119"/>
+                        <constraint firstItem="dYi-E1-SyN" firstAttribute="leading" secondItem="RUq-dS-69t" secondAttribute="leading" constant="16" id="bCA-XP-M2x"/>
+                        <constraint firstItem="DeK-hb-jN8" firstAttribute="centerY" secondItem="dYi-E1-SyN" secondAttribute="centerY" id="geG-6W-ccD"/>
+                        <constraint firstAttribute="trailing" secondItem="DeK-hb-jN8" secondAttribute="trailing" constant="16" id="nPg-Oh-cw1"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-hl-dxp">
+                    <rect key="frame" x="0.0" y="122" width="393" height="696"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="RUq-dS-69t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="D8y-3q-Pvx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RUq-dS-69t" secondAttribute="trailing" id="Fre-5R-UKA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YoJ-hl-dxp" secondAttribute="trailing" id="USi-GK-dOx"/>
+                <constraint firstItem="YoJ-hl-dxp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bi1-jB-FFs"/>
+                <constraint firstItem="RUq-dS-69t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="naB-8R-cPT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YoJ-hl-dxp" secondAttribute="bottom" id="yh4-ZE-Nje"/>
+                <constraint firstItem="YoJ-hl-dxp" firstAttribute="top" secondItem="RUq-dS-69t" secondAttribute="bottom" id="yoK-hk-Ctv"/>
+            </constraints>
+            <point key="canvasLocation" x="43.511450381679388" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
