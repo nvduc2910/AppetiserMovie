@@ -26,7 +26,6 @@ class FavoritedMovieViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.input.viewViewAppear.accept(())
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -39,7 +38,7 @@ class FavoritedMovieViewController: BaseViewController {
         tableView.backgroundColor = Colors.primary
         headerView.backgroundColor = Colors.primary
         titleLabel.setStyle(DS.mobileHero(color: Colors.white))
-        titleLabel.text = "Favorite"
+        titleLabel.text = L10n.titleScreenFavorite
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,7 +49,7 @@ class FavoritedMovieViewController: BaseViewController {
     
     
     func configureTabbar() {
-        tabBarItem = UITabBarItem(title: "Favorite",
+        tabBarItem = UITabBarItem(title: L10n.titleScreenFavorite,
                                   image: Assets.icFavoriteTabbar.image,
                                   tag: 0)
         tabBarItem.selectedImage = Assets.icFavoriteTabbarSelected.image
@@ -91,7 +90,11 @@ extension FavoritedMovieViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let model = viewModel.itemsRelay.value[indexPath.row]
+        let movieDetailViewController = MovieDetailViewController()
+        let movieDetailViewModel = MovieDetailViewModel(movie: model)
+        movieDetailViewController.viewModel = movieDetailViewModel
+        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

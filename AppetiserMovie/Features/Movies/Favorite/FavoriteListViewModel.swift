@@ -54,16 +54,15 @@ final class FavoriteListViewModel: BaseViewModel {
                 self.updateItemsRelay()
             }
         }.disposed(by: disposeBag)
-        
-        input.viewViewAppear.subscribeNext { [weak self] item in
-            guard let self = self else { return }
-            self.updateItemsRelay()
-        }.disposed(by: disposeBag)
     }
     
     func updateItemsRelay() {
-        let movies = favoriteService.getMovies().map({ return $0.transformToUIModel() })
-        itemsRelay.accept(movies)
+        favoriteService.getMovies()
+            .map({ movies -> [MovieItemUIModel] in
+                return movies.map({ return $0.transformToUIModel() })
+            })
+            .bind(to: itemsRelay)
+            .disposed(by: disposeBag)
     }
     
     func viewDidLoad() {}

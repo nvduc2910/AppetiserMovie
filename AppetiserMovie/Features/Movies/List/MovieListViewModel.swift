@@ -72,6 +72,8 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     let searchService: SearchItemServiceType
     let favoriteService: FavoriteServiceType
     
+    let defaultQuery = "star"
+    
     // MARK: - api call
     
     private lazy var getMovieAction = Action<String, [Movie]> { [unowned self] query in
@@ -137,6 +139,6 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     func viewDidLoad() {
         isLoadingPublish.accept(true)
         getAPIRelay.accept(())
-        getMovieAction.execute("star")
+        getMovieAction.execute(defaultQuery)
     }
 }

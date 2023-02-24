@@ -27,3 +27,9 @@
 
 /*  */
 "error_common_unavailable" = "Service is temporarily unavailable. Please try again or contact your System Administrator for further assistance.";
+
+"common_search_placeholder" = "Type to search";
+
+"title_screen_favorite" = "Favorite";
+
+"title_screen_movie" = "Movie";

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol SearchItemServiceType {
-    func searchItem(query: String) -> Single<[Movie]>
+    func searchItem(query: String) -> Observable<[Movie]>
 }
 
 class SearchItemService: SearchItemServiceType {
@@ -25,19 +25,40 @@ class SearchItemService: SearchItemServiceType {
         self.cacheService = cacheService
     }
     
-    func searchItem(query: String) -> Single<[Movie]> {
+    func searchItem(query: String) -> Observable<[Movie]> {
         let searchTarget = SearchTarget(query: query)
         let data: Single<[Movie]> = api.request(target: searchTarget)
-        return data.asObservable().map({ [weak self] movies -> [Movie] in
-            var movies = movies
-            self?.updateFavorites(movies: &movies)
-            return movies
-        }).asSingle()
+        let movies: Observable<[Movie]?> = cacheService.getObject(for: .movies)
+        
+        return movies
+            .flatMapLatest { cacheData -> Single<[Movie]> in
+                return data.map { remoteData -> [Movie] in
+                    var movies = remoteData
+                    self.updateFavorites(movies: &movies, cacheData: cacheData)
+                    return movies
+                }
+            }
+            .asObservable()
     }
     
-    func updateFavorites(movies: inout [Movie]) {
-        let favorite: [Movie]? = cacheService.getObject(for: .movies)
-        let commonIds = Set((favorite ?? []).map { $0.id })
+    func searchItemNew(query: String) -> Observable<[Movie]> {
+        let searchTarget = SearchTarget(query: query)
+        let data: Single<[Movie]> = api.request(target: searchTarget)
+        let movies: Observable<[Movie]?> = cacheService.getObject(for: .movies)
+        
+        return movies
+            .flatMapLatest { cacheData -> Single<[Movie]> in
+                return data.map { remoteData -> [Movie] in
+                    var movies = remoteData
+                    self.updateFavorites(movies: &movies, cacheData: cacheData)
+                    return movies
+                }
+            }
+            .asObservable()
+    }
+    
+    func updateFavorites(movies: inout [Movie], cacheData: [Movie]?) {
+        let commonIds = Set((cacheData ?? []).map { $0.id })
         movies.indices.forEach { index in
             var movieIndex = movies[index]
             movieIndex.isFavorite = commonIds.contains(movieIndex.id)
