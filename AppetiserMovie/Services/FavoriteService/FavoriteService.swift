@@ -27,16 +27,20 @@ class FavoriteService: FavoriteServiceType {
         var movies = self.getCacheMovies()
         var movie = movie
         movie.isFavorite = true
-        movies.append(movie)
-        cacheService.saveObject(movies, for: .movies)
+        if !movies.contains(where: { $0.id == movie.id }) {
+            movies.append(movie)
+            cacheService.saveObject(movies, for: .movies)
+        } else {
+            self.removeItem(movie: movie)
+        }
     }
     
     func removeItem(movie: Movie) {
         var movies = self.getCacheMovies()
         if let index = movies.firstIndex(where: { $0.id == movie.id }) {
             movies.remove(at: index)
-            cacheService.saveObject(movies, for: .movies)
         }
+        cacheService.saveObject(movies, for: .movies)
     }
     
     var disposeBag = DisposeBag()

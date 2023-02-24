@@ -19,6 +19,7 @@ class SearchItemService: SearchItemServiceType {
     let api: APIType
     let cacheService: CacheServiceType
     
+    let disposeBag = DisposeBag()
     init(api: APIType = API.default,
          cacheService: CacheServiceType = CacheService.default) {
         self.api = api
@@ -30,15 +31,12 @@ class SearchItemService: SearchItemServiceType {
         let data: Single<[Movie]> = api.request(target: searchTarget)
         let movies: Observable<[Movie]?> = cacheService.getObject(for: .movies)
         
-        return movies
-            .flatMapLatest { cacheData -> Single<[Movie]> in
-                return data.map { remoteData -> [Movie] in
-                    var movies = remoteData
-                    self.updateFavorites(movies: &movies, cacheData: cacheData)
-                    return movies
-                }
+        return Observable.combineLatest(data.asObservable(), movies.asObservable())
+            .map { remoteData, cacheData in
+                var movies = remoteData
+                self.updateFavorites(movies: &movies, cacheData: cacheData)
+                return movies
             }
-            .asObservable()
     }
     
     func searchItemNew(query: String) -> Observable<[Movie]> {

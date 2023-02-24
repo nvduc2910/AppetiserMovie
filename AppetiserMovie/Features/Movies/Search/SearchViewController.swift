@@ -42,6 +42,7 @@ class SearchViewController: BaseViewController, MVVMView {
         let attributedPlaceholderText = NSAttributedString(string: L10n.commonSearchPlaceholder, attributes: attributes)
         textField.attributedPlaceholder = attributedPlaceholderText
         textField.tintColor = .white
+        textField.clearButtonTintColor = .white
         
         view.backgroundColor = Colors.primary
         

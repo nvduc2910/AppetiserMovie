@@ -100,13 +100,14 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
             
-            item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
-            
+            let isFavorite = item.isFavorite
             var items = self.itemsRelay.value
             if let index = items.firstIndex(where: { $0.trackName == item.trackName }) {
                 items[index].isFavorite.toggle()
                 self.itemsRelay.accept(items)
             }
+            
+            isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
         }.disposed(by: disposeBag)
         
         searchTrigger.subscribeNext { [weak self] keyword in
@@ -127,7 +128,6 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
             let itemsTransform = items.map({ return $0.transformToUIModel() })
             self.itemsRelay.accept(itemsTransform)
             self.isLoadingPublish.accept(false)
-    
         }.disposed(by: disposeBag)
         
         getMovieAction.errors.subscribeNext { [weak self] error in

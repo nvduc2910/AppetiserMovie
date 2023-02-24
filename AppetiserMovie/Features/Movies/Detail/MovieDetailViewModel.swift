@@ -29,7 +29,7 @@ protocol MovieDetailViewModelType {
 
 final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
     
-    let movie: MovieItemUIModel
+    var movie: MovieItemUIModel
     let input: MovieDetailViewModelInput
     let output: MovieDetailViewModelOutput
     
@@ -59,10 +59,16 @@ final class MovieDetailViewModel: BaseViewModel, MovieDetailViewModelType {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
             item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
+            self.movie.isFavorite = !item.isFavorite
+            self.updateSections()
         }.disposed(by: disposeBag)
     }
     
     func viewDidLoad() {
+        updateSections()
+    }
+    
+    func updateSections() {
         var sections: [MovieSectionType] = []
         sections.append(.summary(movie))
         sections.append(.description(movie.longDescription.orEmpty))
