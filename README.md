@@ -2,11 +2,11 @@
 
 Hi there, thanks for spending the time to review my assignment and I hope you will enjoy (reviewing) it. Your comments are much appreciated regardless of the result so please help me understand what I should improve in the future.
 
-## Wireframe and app design
-![Group 8 (1)](https://user-images.githubusercontent.com/12984583/221217313-35ec230c-f4e8-4335-bc7f-b5855c21672a.jpg)
+## 1. Wireframe and app design
+<img width="1046" alt="image" src="https://user-images.githubusercontent.com/12984583/221218178-183ac344-2a08-48c0-ada7-95f5cba833ea.png">
 
 
-## 1. Architecture
+## 2. Architecture
 
 <img width="910" alt="image" src="https://user-images.githubusercontent.com/12984583/221214803-fbc27f93-c68d-4aa8-9044-6579dc58d7cb.png">
 
@@ -19,7 +19,7 @@ The main reason make me choose the MVVM-C because we don't want to massive view 
 - **Output**: Provide all the data for View to visualize and bind the data to View (list of movie items, showing loading indicator, error message...)
 - **Coordinator**: Handle UI navigation. (Following Single Responsibility design pattern)
 
-## 2. Code structure - modules
+## 3. Code structure - modules
 ### AppetiserMovie
 This consists of files being used in the main target.
 - **Extensions**: Extend some existing classes/structs such as UIView, Collection...
@@ -30,17 +30,17 @@ This consists of files being used in the main target.
 - **Resources**: Contain all the resources such as font, assets, localization, strings, etc
 - **Coordinator**: Base coordinator for handling the navigation between screens.
 - **Model**: Represents real state content.
-
-### Persistence
-Using `NSUserDefault` for caching the movie items. That was handling by writing a base cache service with generic data type and inject to ViewModel via protocol therefore it's really easy to upgrade the code base when need to change to another cache type such as Realm, CoreData, SQLite, etc.
-
 ### AppetiserMovieTests
 This contains all unit tests, mock classes and extensions that being used in unit tests
 
 ### AppetiserMovieUITests
-This contains all component acceptance tests (aka UI tests). 
+This contains all component acceptance tests (aka UI tests).
 
-## 3. Main third-party libraries
+## 4. Persistence
+Using `NSUserDefault` for caching the movie items. That was handling by writing a base cache service with generic data type and inject to ViewModel via protocol therefore it's really easy to upgrade the code base when need to change to another cache type such as Realm, CoreData, SQLite, etc.
+
+
+## 5. Main third-party libraries
 Below is the list of third-party libraries that I use in the project:
 - **RxSwift**: It is this project's backbone to seamlessly manipulate UI events (binding between ViewModel and View) as well as API requests/responses. By transforming everything to a sequence of events, it not only makes the logic more understandable and concise but also helps us get rid of the old approach like adding target, delegates, closures which we might feel tedious sometimes.
 - **Alamofire/RxSwift**: To encapsulate API calls in a reactive way by taking advantage of RxSwift.
@@ -49,12 +49,12 @@ Below is the list of third-party libraries that I use in the project:
 - **Kingfisher**: For downloading and caching images.
 - **Action**: This library is used with RxSwift to provide an abstraction on top of observables: actions and mostly I use it for subscribing the api status like receiving data or error when finishing an api call.
 
-## 4. Build the project on local
+## 6. Build the project on local
 After cloning the repo, please run `pod install` or `arch -arch x86_64 pod install ` if you're using M1/M2 from your terminal then open `AppetiserMovie.xcworkspace` and try to build the project using `Xcode 14`. It should work without any additional steps.
 
 When running UI test, please make sure the hardware keyboard is disconnected (Simulator --> Hardware --> Keyboard --> Toggle off **Connect Hardware Keyboard**).
 
-## 5. Tech stack checklist
+## 7. Tech stack checklist
 - [x] Programming language: Swift
 
 - [x] Design app's architecture: MVVM-C 
@@ -75,7 +75,7 @@ When running UI test, please make sure the hardware keyboard is disconnected (Si
 
 - [ ] Acceptance tests
 
-## 6. Feature checklist
+## 8. Feature checklist
 - [x] Show movie list
 - [x] Searching a movie by keyword
 - [x] Favorite/Unfavorite a movie
