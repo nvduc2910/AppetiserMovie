@@ -56,23 +56,14 @@ When running UI test, please make sure the hardware keyboard is disconnected (Si
 
 ## 7. Tech stack checklist
 - [x] Programming language: Swift
-
 - [x] Design app's architecture: MVVM-C 
-
 - [x] DesignSystem model for consitency the UI/UX through the app and easy to change the app style and apply dark/light mode.
-
 - [x] UI matches in the attachment 
-
 - [x] Exception handling
-
 - [x] Code testable
-
 - [x] Caching handling
-
 - [ ] Accessibility for Disability supports
-
 - [ ] Unit tests
-
 - [ ] Acceptance tests
 
 ## 8. Feature checklist
