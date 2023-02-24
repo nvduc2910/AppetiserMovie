@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Colors.highLight], for: .selected)
