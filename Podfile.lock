@@ -3,6 +3,8 @@ PODS:
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
   - Alamofire (5.0.0-rc.2)
+  - AlamofireNetworkActivityLogger (3.0.0):
+    - Alamofire (~> 5.0.0-rc.2)
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
@@ -16,11 +18,6 @@ PODS:
   - JGProgressHUD (2.2)
   - Kingfisher (7.3.2)
   - ObjectMapper (3.5.3)
-  - Realm (10.28.5):
-    - Realm/Headers (= 10.28.5)
-  - Realm/Headers (10.28.5)
-  - RealmSwift (10.28.5):
-    - Realm (= 10.28.5)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
     - Reusable/View (= 4.1.2)
@@ -36,11 +33,6 @@ PODS:
   - RxOptional (5.0.2):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
-  - RxRealm (5.0.4):
-    - Realm (~> 10.21)
-    - RealmSwift (~> 10.21)
-    - RxCocoa (~> 6.1)
-    - RxSwift (~> 6.1)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
@@ -60,6 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - Action
+  - AlamofireNetworkActivityLogger
   - AlamofireObjectMapper
   - DifferenceKit
   - JGProgressHUD
@@ -67,7 +60,6 @@ DEPENDENCIES:
   - Reusable
   - RxDataSources
   - RxOptional
-  - RxRealm
   - RxSwiftExt
   - SkeletonView
   - SnapKit (~> 5.0.0)
@@ -79,19 +71,17 @@ SPEC REPOS:
   trunk:
     - Action
     - Alamofire
+    - AlamofireNetworkActivityLogger
     - AlamofireObjectMapper
     - DifferenceKit
     - Differentiator
     - JGProgressHUD
     - Kingfisher
     - ObjectMapper
-    - Realm
-    - RealmSwift
     - Reusable
     - RxCocoa
     - RxDataSources
     - RxOptional
-    - RxRealm
     - RxRelay
     - RxSwift
     - RxSwiftExt
@@ -104,19 +94,17 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Action: 47f1825511907b4fcd79dd7a7db9526c20f78018
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  AlamofireNetworkActivityLogger: 94e8a7d454a4a9800cef1d0c1d3699754493684b
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
   DifferenceKit: ab185c4d7f9cef8af3fcf593e5b387fb81e999ca
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
-  Realm: eb7f6a7a8395906822e6fab71eb8496d6d52b318
-  RealmSwift: 6b54904d4a236de143f3411a757641fd74e9cb3d
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxOptional: 3664964c96b69dd20c9cf78bdfe546615e26eca8
-  RxRealm: 666c8785327fe2fff972a3093b35dc7055c1ca38
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
@@ -126,6 +114,6 @@ SPEC CHECKSUMS:
   SwiftGen: 787181d7895fa2f5e7313d05de92c387010149c2
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 85cb428b06d6c0586cd08e87182826ca7d87f2dc
+PODFILE CHECKSUM: b9eed7ae73bfc84723f980a38f4c0d2b33aec229
 
 COCOAPODS: 1.11.2

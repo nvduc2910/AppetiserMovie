@@ -26,6 +26,7 @@ public final class DSErrorStateView: DSStateView {
     }
 
     private func configureView() {
+        backgroundColor = Colors.primary
         image = Assets.notFound.image
         title = StateConfig.error.title
         message = StateConfig.error.message
@@ -177,11 +178,12 @@ extension DSStateView {
     }
 
     private func configureView() {
+        backgroundColor = Colors.primary
         constraints
             .filter { $0.firstAttribute == .height }
             .forEach { $0.isActive = false }
 
-        backgroundColor = Colors.white
+        backgroundColor = Colors.primary
 
         containerStackView.axis = .vertical
         containerStackView.alignment = .center

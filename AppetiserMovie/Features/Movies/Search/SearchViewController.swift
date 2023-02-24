@@ -1,60 +1,72 @@
 //
-//  MovieListViewController.swift
+//  SearchViewController.swift
 //  AppetiserMovie
 //
 //  Created by Duckie N on 2/24/23.
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class MovieListViewController: BaseViewController, MVVMView {
-    
-    // MARK: - outlets
-    
-    @IBOutlet weak var titleLabel: UILabel!
+class SearchViewController: BaseViewController, MVVMView {
+
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var searchBoxView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
     var viewModel: MovieListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
         bind(to: viewModel)
-        
-        viewModel.viewDidLoad()
-    }
-    
-    func configureView() {
-        
-        view.backgroundColor = Colors.primary
-        tableView.backgroundColor = Colors.primary
-        headerView.backgroundColor = Colors.primary
-        titleLabel.setStyle(DS.mobileHero(color: Colors.white))
-        titleLabel.text = "Movie"
-        
-        searchButton.setTitle("", for: .normal)
-        searchButton.setImage(Assets.icSearch.image, for: .normal)
-        searchButton.tintColor = Colors.white
-        searchButton.rx.tap.subscribeNext { [weak self] _ in
-            guard let self = self else { return }
-            let searchViewController = SearchViewController()
-            searchViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default)
-            searchViewController.modalPresentationStyle = .fullScreen
-            self.present(searchViewController, animated: true)
-        }.disposed(by: disposeBag)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(cellType: MovieItemTableViewCell.self)
-        
-        navigationController?.isNavigationBarHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func configureView() {
+        headerView.backgroundColor = Colors.primary
+        
+        searchBoxView.backgroundColor = Colors.secondary
+        searchBoxView.cornerRadius = 6
+        
+        textField.setStyle(DS.pDefault(color: Colors.white))
+        textField.placeholder = "Type to search"
+        view.backgroundColor = Colors.primary
+        
+        tableView.backgroundColor = .clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cellType: MovieItemTableViewCell.self)
+        
+        closeButton.setTitle("", for: .normal)
+        closeButton.setImage(Assets.icBack.image, for: .normal)
+        closeButton.tintColor = Colors.white
+        closeButton.rx.tap.subscribeNext { [weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }.disposed(by: disposeBag)
+        
+        textField.becomeFirstResponder()
+        textField
+            .rx
+            .text
+            .distinctUntilChanged()
+            .skip(1)
+            .distinctUntilChanged()
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .subscribeNext { [weak self] text in
+                guard let self = self else { return }
+                self.viewModel.searchTrigger.accept(text.orEmpty)
+                
+            }.disposed(by: disposeBag)
     }
     
     func bind(to viewModel: MovieListViewModel) {
@@ -90,7 +102,7 @@ class MovieListViewController: BaseViewController, MVVMView {
     }
 }
 
-extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -120,7 +132,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension MovieListViewController: StateViewPresentable {
+
+extension SearchViewController: StateViewPresentable {
     var backingView: UIView {
         return containerView
     }

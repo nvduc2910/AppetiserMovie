@@ -58,7 +58,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="YoJ-hl-dxp" firstAttribute="leading" secondItem="Kst-hf-ijW" secondAttribute="leading" id="BiJ-A5-8sU"/>
                         <constraint firstAttribute="trailing" secondItem="YoJ-hl-dxp" secondAttribute="trailing" id="D7v-fe-T24"/>

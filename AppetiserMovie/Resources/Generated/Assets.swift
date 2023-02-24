@@ -25,13 +25,16 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Assets {
   public static let accentColor = ColorAsset(name: "AccentColor")
+  public static let icBack = ImageAsset(name: "ic_back")
   public static let icFavorite24 = ImageAsset(name: "ic_favorite_24")
   public static let icFavoriteTabbar = ImageAsset(name: "ic_favorite_tabbar")
   public static let icFavoriteTabbarSelected = ImageAsset(name: "ic_favorite_tabbar_selected")
   public static let icHomeTabbar = ImageAsset(name: "ic_home_tabbar")
   public static let icHomeTabbarSelected = ImageAsset(name: "ic_home_tabbar_selected")
   public static let icSearch = ImageAsset(name: "ic_search")
+  public static let icUnfavorite24 = ImageAsset(name: "ic_unfavorite_24")
   public static let notFound = ImageAsset(name: "not-found")
+  public static let placeholderImage = ImageAsset(name: "placeholderImage")
 
   // swiftlint:disable trailing_comma
   @available(*, deprecated, message: "All values properties are now deprecated")
@@ -40,13 +43,16 @@ public enum Assets {
   ]
   @available(*, deprecated, message: "All values properties are now deprecated")
   public static let allImages: [ImageAsset] = [
+    icBack,
     icFavorite24,
     icFavoriteTabbar,
     icFavoriteTabbarSelected,
     icHomeTabbar,
     icHomeTabbarSelected,
     icSearch,
+    icUnfavorite24,
     notFound,
+    placeholderImage,
   ]
   // swiftlint:enable trailing_comma
 }

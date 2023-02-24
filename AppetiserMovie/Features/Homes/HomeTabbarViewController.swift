@@ -26,7 +26,7 @@ class MovieListUINavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let movieListViewController = MovieListViewController()
-        movieListViewController.viewModel = MovieListViewModel()
+        movieListViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default)
         setViewControllers([movieListViewController], animated: false)
     }
 }

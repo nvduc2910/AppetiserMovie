@@ -38,8 +38,18 @@ class MovieItemTableViewCell: UITableViewCell, NibReusable {
         boundView.cornerRadius = 6
         boundView.backgroundColor = Colors.secondary
         thumbnailImageView.cornerRadius = 6
+        thumbnailImageView.contentMode = .scaleAspectFill
         titleLabel.setStyle(DS.mobileH1(color: Colors.white))
         descriptionLabel.setStyle(DS.pDefault(color: Colors.neutral))
         priceLabel.setStyle(DS.pDefault(color: Colors.neutral100))
+    }
+    
+    func configureData(_ data: MovieItemUIModel) {
+        titleLabel.text = data.trackName
+        data.isFavorite ? favoriteButton.setImage(Assets.icFavorite24.image, for: .normal) : favoriteButton.setImage(Assets.icUnfavorite24.image, for: .normal)
+        descriptionLabel.text = data.shortDescription.orEmpty
+        priceLabel.text = "\(data.trackPrice ?? 0)\(data.trackPrice)"
+        let artworkURLString = data.artworkUrl?.absoluteString.replacingOccurrences(of: "100x100", with: "500x500")
+        thumbnailImageView.setImageURL(URL(string: artworkURLString.orEmpty), placeholder: Assets.placeholderImage.image)
     }
 }
