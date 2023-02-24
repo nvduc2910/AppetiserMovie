@@ -9,7 +9,7 @@ Hi there, thanks for spending the time to review my assignment and I hope you wi
 
 ## 1. Architecture
 
-
+![alt text]([http://url/to/img.png](https://i.ibb.co/KXsZV1y/1-5nf-F7o3-WNQv-TPtt-Nsi2y-EQ.webp))
 
 The application is using MVVM-C as main archiecture with RxSwift to build the features and Input/Output stream approach. It's quite similar to the traditional version, just that using Input/Output helps us make the responsibility clearer. 
 
@@ -75,7 +75,7 @@ When running UI test, please make sure the hardware keyboard is disconnected (Si
 
 - [ ] Acceptance tests
 
-## 5. Feature checklist
+## 6. Feature checklist
 - [x] Show movie list
 - [x] Searching a movie by keyword
 - [x] Favorite/Unfavorite a movie
