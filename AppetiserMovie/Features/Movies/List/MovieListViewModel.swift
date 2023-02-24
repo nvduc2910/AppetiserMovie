@@ -35,6 +35,21 @@ struct MovieItemUIModel {
     let currency: String?
     let shortDescription: String?
     let longDescription: String?
+    let id: Int
+    let genreName: String?
+    
+    func transformToMovie() -> Movie {
+        return Movie(trackName: trackName,
+                     artworkUrl: artworkUrl,
+                     trackPrice: trackPrice,
+                     country: country,
+                     currency: currency,
+                     shortDescription: shortDescription,
+                     longDescription: longDescription,
+                     id: id,
+                     genreName: genreName,
+                     isFavorite: isFavorite)
+    }
 }
 
 final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
@@ -54,7 +69,8 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     private var disposeBag = DisposeBag()
     private var getAPIRelay = PublishRelay<Void>()
     
-    var searchService: SearchItemServiceType
+    let searchService: SearchItemServiceType
+    let favoriteService: FavoriteServiceType
     
     // MARK: - api call
     
@@ -62,8 +78,10 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
         return self.searchService.searchItem(query: query).asObservable().take(until: getAPIRelay.asObservable())
     }
     
-    init(searchService: SearchItemServiceType) {
+    init(searchService: SearchItemServiceType,
+         favoriteService: FavoriteServiceType) {
         self.searchService = searchService
+        self.favoriteService = favoriteService
         
         input = MovieListViewModelInput(favoriteTrigger: favoriteTrigger,
                                         searchTrigger: searchTrigger)
@@ -80,11 +98,7 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
         favoriteTrigger.subscribeNext { [weak self] item in
             guard let self = self else { return }
             
-            if item.isFavorite {
-                // remove favorite from cache list
-            } else {
-                // add favorite to cache list
-            }
+            item.isFavorite ? self.favoriteService.removeItem(movie: item.transformToMovie()) : self.favoriteService.saveItem(movie: item.transformToMovie())
             
             var items = self.itemsRelay.value
             if let index = items.firstIndex(where: { $0.trackName == item.trackName }) {
@@ -108,14 +122,7 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     func configureGetMovieList() {
         getMovieAction.elements.subscribeNext { [weak self] items in
             guard let self = self else { return }
-            let itemsTransform = items.map({ return MovieItemUIModel(trackName: $0.trackName.orEmpty,
-                                                                     isFavorite: false,
-                                                                     artworkUrl: $0.artworkUrl,
-                                                                     trackPrice: $0.trackPrice,
-                                                                     country: $0.country,
-                                                                     currency: $0.country,
-                                                                     shortDescription: $0.shortDescription,
-                                                                     longDescription: $0.longDescription) })
+            let itemsTransform = items.map({ return $0.transformToUIModel() })
             self.itemsRelay.accept(itemsTransform)
             self.isLoadingPublish.accept(false)
     

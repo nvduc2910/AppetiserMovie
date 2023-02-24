@@ -20,8 +20,6 @@ target 'AppetiserMovie' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'DifferenceKit'
   pod 'AlamofireNetworkActivityLogger'
-#  pod "RxRealm"
-
 
   # Pods for AppetiserMovie
 
