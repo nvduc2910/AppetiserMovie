@@ -25,6 +25,7 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Assets {
   public static let accentColor = ColorAsset(name: "AccentColor")
+  public static let icFavorite24 = ImageAsset(name: "ic_favorite_24")
   public static let icFavoriteTabbar = ImageAsset(name: "ic_favorite_tabbar")
   public static let icFavoriteTabbarSelected = ImageAsset(name: "ic_favorite_tabbar_selected")
   public static let icHomeTabbar = ImageAsset(name: "ic_home_tabbar")
@@ -39,6 +40,7 @@ public enum Assets {
   ]
   @available(*, deprecated, message: "All values properties are now deprecated")
   public static let allImages: [ImageAsset] = [
+    icFavorite24,
     icFavoriteTabbar,
     icFavoriteTabbarSelected,
     icHomeTabbar,

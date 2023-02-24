@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="183" id="KGk-i7-Jjw" customClass="MovieItemTableViewCell" customModule="AppetiserMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="183"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="183"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e55-pF-lOs">
+                        <rect key="frame" x="16" y="8" width="376" height="167"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kn4-fJ-nnr">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="E4w-WO-Yp4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEc-2J-Obt">
+                                <rect key="frame" x="96" y="16" width="264" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b6-en-BG7">
+                                <rect key="frame" x="96" y="136" width="41.333333333333343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="sing Xcode interface builder and asking for a graphical way to do this, but for developers working with Xamarin iOS Designer," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPZ-SK-pbu">
+                                <rect key="frame" x="96" y="43" width="264" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vm4-Pf-Lga">
+                                <rect key="frame" x="326" y="132" width="50" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="f5x-uO-bG6"/>
+                                    <constraint firstAttribute="width" constant="50" id="uI9-UN-SgP"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_favorite_24"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vm4-Pf-Lga" secondAttribute="trailing" id="AKR-Dq-Lsr"/>
+                            <constraint firstAttribute="trailing" secondItem="tEc-2J-Obt" secondAttribute="trailing" constant="16" id="DcV-eZ-9KD"/>
+                            <constraint firstAttribute="bottom" secondItem="vm4-Pf-Lga" secondAttribute="bottom" id="FGF-FH-ybI"/>
+                            <constraint firstItem="tEc-2J-Obt" firstAttribute="top" secondItem="e55-pF-lOs" secondAttribute="top" constant="16" id="N0E-gk-3SF"/>
+                            <constraint firstItem="tEc-2J-Obt" firstAttribute="leading" secondItem="Kn4-fJ-nnr" secondAttribute="trailing" constant="16" id="QzN-Mh-wNP"/>
+                            <constraint firstAttribute="bottom" secondItem="Kn4-fJ-nnr" secondAttribute="bottom" id="StG-EB-zC4"/>
+                            <constraint firstItem="NPZ-SK-pbu" firstAttribute="top" secondItem="tEc-2J-Obt" secondAttribute="bottom" constant="6" id="TsW-oD-FWe"/>
+                            <constraint firstAttribute="bottom" secondItem="4b6-en-BG7" secondAttribute="bottom" constant="10" id="ULb-b8-cT7"/>
+                            <constraint firstItem="4b6-en-BG7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NPZ-SK-pbu" secondAttribute="bottom" constant="16" id="Y6F-Nu-G9q"/>
+                            <constraint firstAttribute="trailing" secondItem="NPZ-SK-pbu" secondAttribute="trailing" constant="16" id="bq5-Gx-F7A"/>
+                            <constraint firstItem="Kn4-fJ-nnr" firstAttribute="leading" secondItem="e55-pF-lOs" secondAttribute="leading" id="eQL-07-oeD"/>
+                            <constraint firstItem="NPZ-SK-pbu" firstAttribute="leading" secondItem="Kn4-fJ-nnr" secondAttribute="trailing" constant="16" id="ecA-5r-sU3"/>
+                            <constraint firstItem="4b6-en-BG7" firstAttribute="leading" secondItem="Kn4-fJ-nnr" secondAttribute="trailing" constant="16" id="gYR-f6-gSC"/>
+                            <constraint firstItem="Kn4-fJ-nnr" firstAttribute="top" secondItem="e55-pF-lOs" secondAttribute="top" id="sZo-BQ-7aY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="e55-pF-lOs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="J8W-Dh-lhG"/>
+                    <constraint firstAttribute="bottom" secondItem="e55-pF-lOs" secondAttribute="bottom" constant="8" id="SUI-Wa-u6H"/>
+                    <constraint firstItem="e55-pF-lOs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="i3R-W5-266"/>
+                    <constraint firstAttribute="trailing" secondItem="e55-pF-lOs" secondAttribute="trailing" constant="16" id="x5W-4m-9rv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="boundView" destination="e55-pF-lOs" id="kUc-c1-G8v"/>
+                <outlet property="descriptionLabel" destination="NPZ-SK-pbu" id="3C8-PZ-hnb"/>
+                <outlet property="favoriteButton" destination="vm4-Pf-Lga" id="433-Oz-R4M"/>
+                <outlet property="priceLabel" destination="4b6-en-BG7" id="4TH-ul-ndd"/>
+                <outlet property="thumbnailImageView" destination="Kn4-fJ-nnr" id="Y5S-bx-a54"/>
+                <outlet property="titleLabel" destination="tEc-2J-Obt" id="lij-Nj-0my"/>
+            </connections>
+            <point key="canvasLocation" x="160.30534351145039" y="31.338028169014088"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_favorite_24" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

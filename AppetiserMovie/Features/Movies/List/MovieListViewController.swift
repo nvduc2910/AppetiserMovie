@@ -24,7 +24,7 @@ class MovieListViewController: BaseViewController {
     func configureView() {
         
         view.backgroundColor = Colors.primary
-        tableView.isHidden = true
+        tableView.backgroundColor = Colors.primary
         headerView.backgroundColor = Colors.primary
         titleLabel.setStyle(DS.mobileHero(color: Colors.white))
         titleLabel.text = "Movie"
@@ -33,9 +33,32 @@ class MovieListViewController: BaseViewController {
         searchButton.setImage(Assets.icSearch.image, for: .normal)
         searchButton.tintColor = Colors.white
         
-        tabBarItem = UITabBarItem(title: "Home",
-                                  image: Assets.icHomeTabbar.image,
-                                  tag: 0)
-        tabBarItem.selectedImage = Assets.icHomeTabbarSelected.image
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(cellType: MovieItemTableViewCell.self)
+    }
+}
+
+extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: MovieItemTableViewCell.self)
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 145
     }
 }
