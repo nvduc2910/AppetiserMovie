@@ -25,7 +25,9 @@ class MovieListUINavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewControllers([MovieListViewController()], animated: false)
+        let movieListViewController = MovieListViewController()
+        movieListViewController.viewModel = MovieListViewModel()
+        setViewControllers([movieListViewController], animated: false)
     }
 }
 

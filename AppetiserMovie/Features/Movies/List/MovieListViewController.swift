@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListViewController: BaseViewController {
+class MovieListViewController: BaseViewController, MVVMView {
     
     // MARK: - outlets
     
@@ -15,10 +15,16 @@ class MovieListViewController: BaseViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    
+    var viewModel: MovieListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        bind(to: viewModel)
+        
+        viewModel.viewDidLoad()
     }
     
     func configureView() {
@@ -37,6 +43,21 @@ class MovieListViewController: BaseViewController {
         tableView.dataSource = self
         tableView.register(cellType: MovieItemTableViewCell.self)
     }
+    
+    func bind(to viewModel: MovieListViewModel) {
+        viewModel
+            .output
+            .isLoadingStream
+            .subscribeNext { [weak self] isLoading in
+                guard let self = self else { return }
+                if isLoading {
+                    self.startLoading()
+                } else {
+                    self.endLoading(animated: true, error: nil, completion: nil)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -45,7 +66,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return viewModel.itemsRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,5 +81,41 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 145
+    }
+}
+
+extension MovieListViewController: StateViewPresentable {
+    var backingView: UIView {
+        return containerView
+    }
+    
+    private func makeSkeletionView() -> SkeletonTableView {
+        
+        let configureCell: SkeletonTableView.ConfigureCell = { [weak self] (tableView, indexPath) -> UITableViewCell in
+            let cell: MovieItemLoadingTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.selectionStyle = .none
+            guard self != nil else {
+                return cell
+            }
+            return cell
+        }
+        
+        let configureTableView: SkeletonTableView.ConfigureTableView = { tableView in
+            tableView.register(cellType: MovieItemLoadingTableViewCell.self)
+            tableView.rowHeight = 145
+            tableView.backgroundColor = .clear
+        }
+        
+        let skeletonView = SkeletonTableView(configureCell: configureCell, configureTableView: configureTableView)
+        skeletonView.backgroundColor = .clear
+        return skeletonView
+    }
+    
+    func loadingView() -> UIView? {
+        return makeSkeletionView()
+    }
+    
+    func hasContent() -> Bool {
+        viewModel.output.itemsStream.value.isNotEmpty
     }
 }

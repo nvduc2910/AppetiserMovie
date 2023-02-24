@@ -83,7 +83,7 @@ extension SkeletonTableView: UITableViewDataSource {
         cell.contentView.isHidden = !isActiveSkeleton
 
         if isActiveSkeleton {
-            cell.showAnimatedGradientSkeleton()
+            cell.showSkeleton(usingColor: .darkGray)
         } else {
             cell.hideSkeleton()
         }
