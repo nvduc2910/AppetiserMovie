@@ -21,7 +21,7 @@ final class AppCoordinator: BaseCoordinator {
         tabbarCoordinator.start()
         self.addDependency(tabbarCoordinator)
     }
-    
+    ///
     func startFavoritedMovieCoordinator(navigationController: UINavigationController) -> UIViewController {
         let favoritedMovieCoordinator = FavoritedMovieCoordinator(navigationController: navigationController)
         favoritedMovieCoordinator.start()
