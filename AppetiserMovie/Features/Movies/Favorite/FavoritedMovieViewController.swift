@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritedMovieViewController: BaseViewController {
+class FavoritedMovieViewController: BaseViewController, MVVMView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!

@@ -307,14 +307,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		84D46CA929A88E2600721D8E /* Common */ = {
+		84D46CA929A88E2600721D8E /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				AB2982E029A89834007E3E76 /* BaseViewModel */,
 				AB2982E229A89834007E3E76 /* MVVMView */,
 				84D46CAE29A88F2400721D8E /* BaseViewController */,
 			);
-			path = Common;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		84D46CAE29A88F2400721D8E /* BaseViewController */ = {
@@ -633,6 +633,15 @@
 			path = DescriptionCell;
 			sourceTree = "<group>";
 		};
+		AB2CDAF129A9B7EE002940AD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AB2982BF29A8747C007E3E76 /* Main.storyboard */,
+				AB7F190029A710C800F841EB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		AB7F18E929A710C500F841EB = {
 			isa = PBXGroup;
 			children = (
@@ -659,8 +668,7 @@
 		AB7F18F429A710C500F841EB /* AppetiserMovie */ = {
 			isa = PBXGroup;
 			children = (
-				84D46CB129A88FC400721D8E /* Features */,
-				84D46CA929A88E2600721D8E /* Common */,
+				84D46CA929A88E2600721D8E /* Base */,
 				84D46CA329A875E100721D8E /* Coordinator */,
 				84D46C9429A874A300721D8E /* Networking */,
 				84D46C9129A8749900721D8E /* Models */,
@@ -668,10 +676,10 @@
 				AB29826B29A72368007E3E76 /* DesignSystem */,
 				AB29822F29A715DD007E3E76 /* Utils */,
 				AB29822C29A7154F007E3E76 /* Extension */,
-				AB2982BF29A8747C007E3E76 /* Main.storyboard */,
+				84D46CB129A88FC400721D8E /* Features */,
+				AB2CDAF129A9B7EE002940AD /* Storyboard */,
 				AB29822E29A715B9007E3E76 /* Resources */,
 				AB7F18F529A710C500F841EB /* AppDelegate.swift */,
-				AB7F190029A710C800F841EB /* LaunchScreen.storyboard */,
 				AB7F190329A710C800F841EB /* Info.plist */,
 			);
 			path = AppetiserMovie;
