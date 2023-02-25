@@ -75,8 +75,6 @@ When running UI test, please make sure the hardware keyboard is disconnected (Si
 - [x] Offline mode
 - [x] Handle conner cases (search empty/ server error/ networking error)
 
-<video width="320" height="240" controls>
-  <source src="https://s60.freeconvert.com/task/63f98e76d62eea93189a741d/Simulator%20Screen%20Recording%20-%20iPhone%2014%20Pro%20-%202023-02-25%20at%2011.22.43.mp4" type="video/mp4">
-</video>
+<iframe src="https://www.veed.io/embed/42851821-4225-4427-b2a9-8a9f0ea5af54" width="744" height="504" frameborder="0" title="Simulator Screen Recording - iPhone 14 Pro - 2023-02-25 at 11.22.43.mp4" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 Thanks and have a nice day ahead.
