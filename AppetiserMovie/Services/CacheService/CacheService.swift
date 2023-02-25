@@ -25,13 +25,16 @@ public class CacheService: NSObject, CacheServiceType {
     
     public init(userDefault: UserDefaults = UserDefaults.standard) {
         self.userDefault = userDefault
+        super.init()
+        UserAppSettingsKey.allCases.map { $0.name }.forEach { [weak self] key in
+            self?.addObserver(key: key)
+        }
     }
     
     func saveObject<T>(_ data: T, for key: UserAppSettingsKey) where T : Decodable, T : Encodable {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(data) {
             userDefault.set(encoded, forKey: key.name)
-            addObserver(key: key.name)
         }
     }
     

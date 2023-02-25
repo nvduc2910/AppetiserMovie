@@ -48,7 +48,7 @@ class MovieSummaryTableViewCell: UITableViewCell, NibReusable {
     func configureData(_ data: MovieItemUIModel) {
         titleLabel.text = data.trackName
         data.isFavorite ? favoriteButton.setImage(Assets.icFavorite24.image, for: .normal) : favoriteButton.setImage(Assets.icUnfavorite24.image, for: .normal)
-        priceLabel.text = "\(data.trackPrice ?? 0)\(data.currency.orEmpty)"
+        priceLabel.text = "\(data.trackPrice ?? 0)\(data.currency.orEmpty) | \(data.genreName ?? "")"
         let artworkURLString = data.artworkUrl?.absoluteString.replacingOccurrences(of: "100x100", with: "500x500")
         thumbnailImage.setImageURL(URL(string: artworkURLString.orEmpty), placeholder: Assets.placeholderImage.image)
     }

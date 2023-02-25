@@ -14,10 +14,12 @@ import Action
 struct FavoriteListViewModelInput {
     var removeFavoriteTrigger: PublishRelay<MovieItemUIModel>
     var viewViewAppear = PublishRelay<Void>()
+    var didTapItem = PublishRelay<Int>()
 }
 
 struct FavoriteListViewModelOutput {
     let itemsStream: BehaviorRelay<[MovieItemUIModel]>
+    let showMovieDetail: PublishRelay<MovieItemUIModel>
 }
 
 final class FavoriteListViewModel: BaseViewModel {
@@ -30,6 +32,7 @@ final class FavoriteListViewModel: BaseViewModel {
     
     // MARK: - output ref
     let itemsRelay = BehaviorRelay<[MovieItemUIModel]>(value: [])
+    let showMovieDetail = PublishRelay<MovieItemUIModel>()
     
     private var disposeBag = DisposeBag()
     
@@ -39,7 +42,7 @@ final class FavoriteListViewModel: BaseViewModel {
         self.favoriteService = favoriteService
         
         input = FavoriteListViewModelInput(removeFavoriteTrigger: removeFavoriteTrigger)
-        output = FavoriteListViewModelOutput(itemsStream: itemsRelay)
+        output = FavoriteListViewModelOutput(itemsStream: itemsRelay, showMovieDetail: showMovieDetail)
         
         configureInput()
         updateItemsRelay()
@@ -54,10 +57,19 @@ final class FavoriteListViewModel: BaseViewModel {
                 self.updateItemsRelay()
             }
         }.disposed(by: disposeBag)
+        
+        input.didTapItem
+            .withLatestFrom(self.itemsRelay) { ($0, $1) }
+            .map { index, items -> MovieItemUIModel in
+                return items[index]
+            }
+            .bind(to: self.showMovieDetail)
+            .disposed(by: disposeBag)
     }
     
     func updateItemsRelay() {
         favoriteService.getMovies()
+            .filterNil()
             .map({ movies -> [MovieItemUIModel] in
                 return movies.map({ return $0.transformToUIModel() })
             })

@@ -27,9 +27,7 @@ class MovieListUINavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let movieListViewController = MovieListViewController()
-        movieListViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default,
-                                                               favoriteService: FavoriteService.default)
+        let movieListViewController = AppCoordinator.shared.startMovieListCoordinator(navigationController: self)
         setViewControllers([movieListViewController], animated: false)
     }
 }
@@ -41,8 +39,7 @@ class FavoriteUINavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let favoriteListViewController = FavoritedMovieViewController()
-        favoriteListViewController.viewModel = FavoriteListViewModel()
+        let favoriteListViewController = AppCoordinator.shared.startFavoritedMovieCoordinator(navigationController: self)
         setViewControllers([favoriteListViewController], animated: false)
     }
 }

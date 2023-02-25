@@ -40,10 +40,7 @@ class MovieListViewController: BaseViewController, MVVMView {
         searchButton.tintColor = Colors.white
         searchButton.rx.tap.subscribeNext { [weak self] _ in
             guard let self = self else { return }
-            let searchViewController = SearchViewController()
-            searchViewController.viewModel = MovieListViewModel(searchService: SearchItemService.default, favoriteService: FavoriteService.default)
-            searchViewController.modalPresentationStyle = .fullScreen
-            self.present(searchViewController, animated: true)
+            self.viewModel.input.didTapSearch.accept(())
         }.disposed(by: disposeBag)
         
         tableView.delegate = self
@@ -112,11 +109,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.itemsRelay.value[indexPath.row]
-        let movieDetailViewController = MovieDetailViewController()
-        let movieDetailViewModel = MovieDetailViewModel(movie: model)
-        movieDetailViewController.viewModel = movieDetailViewModel
-        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+        viewModel.input.didTapItem.accept(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

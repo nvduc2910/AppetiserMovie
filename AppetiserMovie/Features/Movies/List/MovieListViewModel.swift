@@ -18,15 +18,20 @@ protocol MovieListViewModelType {
 struct MovieListViewModelInput {
     var favoriteTrigger: PublishRelay<MovieItemUIModel>
     var searchTrigger: PublishRelay<String>
+    var didTapItem = PublishRelay<Int>()
+    var didTapSearch = PublishRelay<Void>()
 }
 
 struct MovieListViewModelOutput {
     let itemsStream: BehaviorRelay<[MovieItemUIModel]>
     let errorStream: PublishRelay<ActionError>
     let isLoadingStream: PublishRelay<Bool>
+    
+    let showMovieDetail: PublishRelay<MovieItemUIModel>
+    let showSearchScreen: PublishRelay<Void>
 }
 
-struct MovieItemUIModel {
+public struct MovieItemUIModel {
     let trackName: String
     var isFavorite: Bool
     let artworkUrl: URL?
@@ -65,6 +70,8 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     let itemsRelay = BehaviorRelay<[MovieItemUIModel]>(value: [])
     let errorPublish = PublishRelay<ActionError>()
     let isLoadingPublish = PublishRelay<Bool>()
+    let showMovieDetail = PublishRelay<MovieItemUIModel>()
+    let showSearchScreen = PublishRelay<Void>()
     
     private var disposeBag = DisposeBag()
     private var getAPIRelay = PublishRelay<Void>()
@@ -89,7 +96,9 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
                                         searchTrigger: searchTrigger)
         output = MovieListViewModelOutput(itemsStream: itemsRelay,
                                           errorStream: errorPublish,
-                                          isLoadingStream: isLoadingPublish)
+                                          isLoadingStream: isLoadingPublish,
+                                          showMovieDetail: showMovieDetail,
+                                          showSearchScreen: showSearchScreen)
         
         configureInput()
         configureOutput()
@@ -116,6 +125,18 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
             self.getAPIRelay.accept(())
             self.getMovieAction.execute(keyword)
         }.disposed(by: disposeBag)
+        
+        input.didTapItem
+            .withLatestFrom(self.itemsRelay) { ($0, $1) }
+            .map { index, items -> MovieItemUIModel in
+                return items[index]
+            }
+            .bind(to: self.showMovieDetail)
+            .disposed(by: disposeBag)
+        
+        input.didTapSearch
+            .bind(to: self.showSearchScreen)
+            .disposed(by: disposeBag)
     }
     
     func configureOutput() {

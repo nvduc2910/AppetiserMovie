@@ -11,7 +11,7 @@ import RxSwift
 protocol FavoriteServiceType {
     func saveItem(movie: Movie)
     func removeItem(movie: Movie)
-    func getMovies() -> Observable<[Movie]>
+    func getMovies() -> Observable<[Movie]?>
 }
 
 class FavoriteService: FavoriteServiceType {
@@ -43,9 +43,9 @@ class FavoriteService: FavoriteServiceType {
         cacheService.saveObject(movies, for: .movies)
     }
     
-    func getMovies() -> Observable<[Movie]> {
+    func getMovies() -> Observable<[Movie]?> {
         let data: Observable<[Movie]?> = cacheService.getObject(for: .movies)
-        return data.filterNil()
+        return data
     }
     
     private func getCacheMovies() -> [Movie] {

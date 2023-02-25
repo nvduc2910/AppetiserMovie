@@ -90,11 +90,7 @@ extension FavoritedMovieViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.itemsRelay.value[indexPath.row]
-        let movieDetailViewController = MovieDetailViewController()
-        let movieDetailViewModel = MovieDetailViewModel(movie: model)
-        movieDetailViewController.viewModel = movieDetailViewModel
-        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+        viewModel.input.didTapItem.accept(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

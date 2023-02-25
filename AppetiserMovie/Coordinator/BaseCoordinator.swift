@@ -38,14 +38,8 @@ public class BaseCoordinator: NSObject, Coordinator {
         }
     }
 
-    func startObservable() -> Observable<Void> {
+    func start() {
         fatalError("Should be implemented by sub class.")
-    }
-
-    func coordinate(to coordinator: BaseCoordinator) -> Observable<Void> {
-        addDependency(coordinator)
-        return coordinator.startObservable()
-            .do(onNext: { [weak self, weak coordinator] in self?.removeDependency(coordinator) })
     }
 }
 

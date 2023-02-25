@@ -12,7 +12,7 @@ import AlamofireNetworkActivityLogger
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    public var window: UIWindow?
+    private var appCoordinator: AppCoordinator!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -20,26 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkActivityLogger.shared.level = .debug
         NetworkActivityLogger.shared.startLogging()
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Colors.highLight], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Colors.secondary], for: .normal)
-        
-        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        window?.rootViewController = homeViewController
-        window?.makeKeyAndVisible()
-        faceInEffect()
-        
+        appCoordinator = AppCoordinator()
+        appCoordinator.start()
         return true
-    }
-
-    private func faceInEffect() {
-        self.window?.makeKeyAndVisible()
-        UIView.transition(with: self.window!,
-                          duration: 0.3,
-                          options: .transitionCrossDissolve,
-                          animations: nil,
-                          completion: nil)
     }
 }
 

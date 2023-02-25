@@ -12,24 +12,25 @@ import RxSwift
 final class AppCoordinator: BaseCoordinator {
     static var shared = AppCoordinator()
     
-    override private init() {
+    override public init() {
         super.init()
     }
     
-    override func startObservable() -> Observable<Void> {
-        let tabbarCoordinator = TabbarCoordinator()
-        return self.coordinate(to: tabbarCoordinator)
+    override func start() {
+        let tabbarCoordinator = HomeTabbarCoordinator()
+        tabbarCoordinator.start()
+        self.addDependency(tabbarCoordinator)
     }
     
-//    public func startHomeView() -> (BaseCoordinator, UIViewController) {
-//        let coordinator = HomeViewCoordinator()
-//        addDependency(coordinator)
-//        return (coordinator, coordinator.start())
-//    }
-//    
-//    public func startFavoriteView() -> (BaseCoordinator, UIViewController) {
-//        let coordinator = FavoriteViewCoordinator()
-//        addDependency(coordinator)
-//        return (coordinator, coordinator.start())
-//    }
+    func startFavoritedMovieCoordinator(navigationController: UINavigationController) -> UIViewController {
+        let favoritedMovieCoordinator = FavoritedMovieCoordinator(navigationController: navigationController)
+        favoritedMovieCoordinator.start()
+        return favoritedMovieCoordinator.viewController
+    }
+    
+    func startMovieListCoordinator(navigationController: UINavigationController) -> UIViewController {
+        let movieListCoordinator = MovieListCoordinator(navigationController: navigationController)
+        movieListCoordinator.start()
+        return movieListCoordinator.viewController
+    }
 }
