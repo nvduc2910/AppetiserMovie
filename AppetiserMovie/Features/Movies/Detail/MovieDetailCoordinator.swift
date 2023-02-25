@@ -22,6 +22,7 @@ public class MovieDetailCoordinator: BaseCoordinator {
     
     override func start() {
         let movieDetailViewController = MovieDetailViewController()
+        movieDetailViewController.hidesBottomBarWhenPushed = true
         let movieDetailViewModel = MovieDetailViewModel(movie: movie)
         movieDetailViewController.viewModel = movieDetailViewModel
         self.navigationController.pushViewController(movieDetailViewController, animated: true)
