@@ -20,6 +20,7 @@ struct MovieListViewModelInput {
     var searchTrigger: PublishRelay<String>
     var didTapItem = PublishRelay<Int>()
     var didTapSearch = PublishRelay<Void>()
+    var didTapClose = PublishRelay<Void>()
 }
 
 struct MovieListViewModelOutput {
@@ -29,6 +30,7 @@ struct MovieListViewModelOutput {
     
     let showMovieDetail: PublishRelay<MovieItemUIModel>
     let showSearchScreen: PublishRelay<Void>
+    let closeScreen: PublishRelay<Void>
 }
 
 public struct MovieItemUIModel {
@@ -72,6 +74,7 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
     let isLoadingPublish = PublishRelay<Bool>()
     let showMovieDetail = PublishRelay<MovieItemUIModel>()
     let showSearchScreen = PublishRelay<Void>()
+    let closeScreen = PublishRelay<Void>()
     
     private var disposeBag = DisposeBag()
     private var getAPIRelay = PublishRelay<Void>()
@@ -98,7 +101,8 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
                                           errorStream: errorPublish,
                                           isLoadingStream: isLoadingPublish,
                                           showMovieDetail: showMovieDetail,
-                                          showSearchScreen: showSearchScreen)
+                                          showSearchScreen: showSearchScreen,
+                                          closeScreen: closeScreen)
         
         configureInput()
         configureOutput()
@@ -136,6 +140,10 @@ final class MovieListViewModel: BaseViewModel, MovieListViewModelType {
         
         input.didTapSearch
             .bind(to: self.showSearchScreen)
+            .disposed(by: disposeBag)
+        
+        input.didTapClose
+            .bind(to: self.closeScreen)
             .disposed(by: disposeBag)
     }
     

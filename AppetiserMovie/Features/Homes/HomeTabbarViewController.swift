@@ -43,3 +43,9 @@ class FavoriteUINavigationController: UINavigationController {
         setViewControllers([favoriteListViewController], animated: false)
     }
 }
+
+class CustomUINavigationController: UINavigationController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}

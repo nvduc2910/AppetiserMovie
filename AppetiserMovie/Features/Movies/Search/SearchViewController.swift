@@ -56,7 +56,7 @@ class SearchViewController: BaseViewController, MVVMView {
         closeButton.tintColor = Colors.white
         closeButton.rx.tap.subscribeNext { [weak self] _ in
             guard let self = self else { return }
-            self.dismiss(animated: true)
+            self.viewModel.input.didTapClose.accept(())
         }.disposed(by: disposeBag)
         
         textField.becomeFirstResponder()

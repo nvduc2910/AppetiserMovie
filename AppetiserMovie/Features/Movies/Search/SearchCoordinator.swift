@@ -12,6 +12,8 @@ public class SearchCoordinator: BaseCoordinator {
     
     var navigationController: UINavigationController
     
+    var naviSearchViewController: UINavigationController?
+    
     public init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         super.init()
@@ -29,13 +31,23 @@ public class SearchCoordinator: BaseCoordinator {
             }
             .disposed(by: disposeBag)
         
-        searchViewController.modalPresentationStyle = .fullScreen
-        self.navigationController.present(searchViewController, animated: true)
+        viewModel.output
+            .closeScreen
+            .subscribeNext { item in
+                self.naviSearchViewController?.dismiss(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        let naviSearch = CustomUINavigationController(rootViewController: searchViewController)
+        naviSearch.modalPresentationStyle = .fullScreen
+        naviSearch.isNavigationBarHidden = true
+        naviSearchViewController = naviSearch
+        self.navigationController.present(naviSearch, animated: true)
     }
     
     func showMovieDetail(_ item: MovieItemUIModel) {
         let movieDetailCoordinator = MovieDetailCoordinator(movie: item,
-                                                            navigationController: self.navigationController)
+                                                            navigationController: naviSearchViewController ?? navigationController)
         movieDetailCoordinator.start()
     }
 }
